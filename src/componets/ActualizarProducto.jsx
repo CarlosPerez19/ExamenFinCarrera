@@ -8,7 +8,7 @@ export const ActualizarProductos = () => {
     const [form, setForm] = useState({
         marca: '',
         modelo: '',
-        anio_fabricacion: '',
+        anio_fabrication: '',
         placa: '',
         color: '',
         tipo_vehiculo: '',
@@ -76,7 +76,7 @@ export const ActualizarProductos = () => {
 
             const formConFechaFormateada = {
                 ...form,
-                anio_fabricacion: formatearFecha(form.anio_fabricacion)
+                anio_fabrication: formatearFecha(form.anio_fabrication)
             };
 
             const respuesta = await axios.put(url, formConFechaFormateada, {
@@ -88,7 +88,7 @@ export const ActualizarProductos = () => {
             setForm({
                 marca: '',
                 modelo: '',
-                anio_fabricacion: '',
+                anio_fabrication: '',
                 placa: '',
                 color: '',
                 tipo_vehiculo: '',
@@ -138,7 +138,7 @@ export const ActualizarProductos = () => {
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="anio_fabricacion">Año de Fabricación:</label>
                             <input type="date" id="anio_fabricacion" name='anio_fabricacion'
-                                value={form.anio_fabricacion} onChange={handleChange}
+                                value={form.anio_fabrication} onChange={handleChange}
                                 placeholder="Ingresa el año de fabricación del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
