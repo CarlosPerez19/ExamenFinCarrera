@@ -51,7 +51,7 @@ export const CrearPedido = () => {
         e.preventDefault();
         
         try {
-            const url =  `${import.meta.env.VITE_BACKEND_URL}/crearPedido`;
+            const url =  `${import.meta.env.VITE_BACKEND_URL}/crearReserva`;
             const token = localStorage.getItem('token'); 
             if (!token) {
                 setMensaje({ respuesta: 'No se encontró el token', tipo: false });

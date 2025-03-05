@@ -53,7 +53,7 @@ export const ActualizarPedidos = () => {
         e.preventDefault();
         
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/detallePedido/${codigo}`;
+            const url = `${import.meta.env.VITE_BACKEND_URL}/actualizarPReserva/${codigo}`;
             const token = localStorage.getItem('token');
             if (!token) {
                 setMensaje({ respuesta: 'No se encontró el token', tipo: false });

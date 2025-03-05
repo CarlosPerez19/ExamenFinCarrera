@@ -6,13 +6,14 @@ export const ActualizarProductos = () => {
 
     const [codigo, setCodigo] = useState('');
     const [form, setForm] = useState({
-        nombre: '',
-        precio: '',
-        descripcion: '',
-        categoria: '',
-        stock: '',
-        proveedor: '',
-        fecha_ingreso: ''
+        marca: '',
+        modelo: '',
+        anio_fabricacion: '',
+        placa: '',
+        color: '',
+        tipo_vehiculo: '',
+        kilometraje: '',
+        descripcion: ''
     });
     const [mensaje, setMensaje] = useState({});
     const [productoEncontrado, setProductoEncontrado] = useState(false);
@@ -32,7 +33,7 @@ export const ActualizarProductos = () => {
         e.preventDefault();
         
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/detalleProducto/${codigo}`;
+            const url = `${import.meta.env.VITE_BACKEND_URL}/detalleVehiculo/${codigo}`;
             const token = localStorage.getItem('token');
             if (!token) {
                 setMensaje({ respuesta: 'No se encontró el token', tipo: false });
@@ -57,7 +58,7 @@ export const ActualizarProductos = () => {
         e.preventDefault();
         
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/actualizarProducto/${codigo}`;
+            const url = `${import.meta.env.VITE_BACKEND_URL}/actualizarVehiculo/${codigo}`;
             const token = localStorage.getItem('token'); 
             if (!token) {
                 setMensaje({ respuesta: 'No se encontró el token', tipo: false });
@@ -104,80 +105,84 @@ export const ActualizarProductos = () => {
       return (
         <>
             <div>
+                {Object.keys(mensaje).length > 0 && <Mensaje tipo={mensaje.tipo}>{mensaje.respuesta}</Mensaje>}
 
-                <div>
-                    {Object.keys(mensaje).length>0 && <Mensaje tipo={mensaje.tipo}>{mensaje.respuesta}</Mensaje>}
-              
+                {!productoEncontrado ? (
+                    <form onSubmit={handleBuscarProducto}>
+                        <div>
+                            <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="codigo">Código Vehículo:</label>
+                            <input type="text" id="codigo" name="codigo"
+                                value={codigo} onChange={handleCodigoChange}
+                                placeholder="Ingresa el código del vehículo a buscar" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
+                        </div>
+                        <div>
+                            <button className="bg-gray-600 w-full p-3 text-slate-300 uppercase font-bold rounded-lg hover:bg-gray-900 cursor-pointer transition-all mt-4">Buscar</button>
+                        </div>
+                    </form>
+                ) : (
                     <form onSubmit={handleSubmit}>
-
-                  
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="marca">Marca:</label>
                             <input type="text" id="marca" name='marca'
-                                value={form.codigo} onChange={handleChange}
+                                value={form.marca} onChange={handleChange}
                                 placeholder="Ingresa la marca del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="modelo">Modelo:</label>
                             <input type="text" id="modelo" name='modelo'
-                                value={form.nombre} onChange={handleChange}
+                                value={form.modelo} onChange={handleChange}
                                 placeholder="Ingresa el modelo del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="anio_fabricacion">Año de Fabricación:</label>
                             <input type="date" id="anio_fabricacion" name='anio_fabricacion'
-                                value={form.fecha_ingreso} onChange={handleChange}
+                                value={form.anio_fabricacion} onChange={handleChange}
                                 placeholder="Ingresa el año de fabricación del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="placa">Placa:</label>
-                            <input type="number" id="placa" name='placa'
-                                value={form.precio} onChange={handleChange}
+                            <input type="text" id="placa" name='placa'
+                                value={form.placa} onChange={handleChange}
                                 placeholder="Ingresa la placa del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="color">Color:</label>
                             <input type="text" id="color" name='color'
-                                value={form.descripcion} onChange={handleChange}
+                                value={form.color} onChange={handleChange}
                                 placeholder="Ingresa el color del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="tipo_vehiculo">Tipo de Vehículo:</label>
                             <input type="text" id="tipo_vehiculo" name='tipo_vehiculo'
-                                value={form.categoria} onChange={handleChange}
+                                value={form.tipo_vehiculo} onChange={handleChange}
                                 placeholder="Ingresa el tipo de vehiculo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="kilometraje">Kilometraje:</label>
                             <input type="number" id="kilometraje" name='kilometraje'
-                                value={form.stock} onChange={handleChange}
+                                value={form.kilometraje} onChange={handleChange}
                                 placeholder="Ingresa el kilometraje del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="descripcion">Descripción:</label>
                             <input type="text" id="descripcion" name='descripcion'
-                                value={form.proveedor} onChange={handleChange}
+                                value={form.descripcion} onChange={handleChange}
                                 placeholder="Ingresa la descripcion del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
                         <div>
                             <button className=" bg-gray-600 w-full p-3 text-slate-300 uppercase font-bold rounded-lg hover:bg-gray-900 cursor-pointer transition-al mt-4">Actualizar</button>
                         </div>
-
-
                     </form>
-
-                </div>
-
+                )}
             </div>
-
         </>
     )
 }

@@ -15,7 +15,7 @@ export const DetalleProductos = () => {
         e.preventDefault();
         
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/detalleProducto/${codigo}`;
+            const url = `${import.meta.env.VITE_BACKEND_URL}/detalleVehiculo/${codigo}`;
             const token = localStorage.getItem('token');
             if (!token) {
                 setMensaje({ respuesta: 'No se encontró el token', tipo: false });

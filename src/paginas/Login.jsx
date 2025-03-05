@@ -25,9 +25,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const url = form.password.includes("vet")
-            ? `${import.meta.env.VITE_BACKEND_URL}/paciente/login`
-            : `${import.meta.env.VITE_BACKEND_URL}/login`
+        const url = `${import.meta.env.VITE_BACKEND_URL}/login`
         try {
             const respuesta = await axios.post(url, form)
             localStorage.setItem('token', respuesta.data.token)

@@ -9,7 +9,7 @@ export const ListarProductos = () => {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const url = `${import.meta.env.VITE_BACKEND_URL}/listarProductos`;
+                const url = `${import.meta.env.VITE_BACKEND_URL}/listarVehiculo`;
                 const token = localStorage.getItem('token');
                 if (!token) {
                     setMensaje({ respuesta: 'No se encontró el token', tipo: false });
@@ -53,7 +53,7 @@ export const ListarProductos = () => {
                             <tr key={producto._id}>
                                 <td className="border px-4 py-2">{producto.marca}</td>
                                 <td className="border px-4 py-2">{producto.modelo}</td>
-                                <td className="border px-4 py-2">{producto.anio_fabricacion}</td>
+                                <td className="border px-4 py-2">{producto.anio_fabrication}</td>
                                 <td className="border px-4 py-2">{producto.placa}</td>
                                 <td className="border px-4 py-2">{producto.color}</td>
                                 <td className="border px-4 py-2">{producto.tipo_vehiculo}</td>

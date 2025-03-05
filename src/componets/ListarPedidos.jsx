@@ -9,7 +9,7 @@ export const ListarPedidos = () => {
     useEffect(() => {
         const obtenerPedidos = async () => {
             try {
-                const url = `${import.meta.env.VITE_BACKEND_URL}/listarPedidos`;
+                const url = `${import.meta.env.VITE_BACKEND_URL}/listarReserva`;
                 const token = localStorage.getItem('token');
                 if (!token) {
                     setMensaje({ respuesta: 'No se encontró el token', tipo: false });
