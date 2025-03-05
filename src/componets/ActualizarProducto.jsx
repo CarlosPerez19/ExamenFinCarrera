@@ -45,7 +45,17 @@ export const ActualizarProductos = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            setForm(respuesta.data);
+            const data = respuesta.data;
+            setForm({
+                marca: data.marca,
+                modelo: data.modelo,
+                anio_fabrication: data.anio_fabrication.split('T')[0], 
+                placa: data.placa,
+                color: data.color,
+                tipo_vehiculo: data.tipo_vehiculo,
+                kilometraje: data.kilometraje,
+                descripcion: data.descripcion
+            });
             setProductoEncontrado(true);
             setMensaje({});
         } catch (error) {
@@ -136,8 +146,8 @@ export const ActualizarProductos = () => {
                         </div>
 
                         <div>
-                            <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="anio_fabricacion">Año de Fabricación:</label>
-                            <input type="date" id="anio_fabricacion" name='anio_fabricacion'
+                            <label className="text-gray-700 uppercase font-bold text-sm" htmlFor="anio_fabrication">Año de Fabricación:</label>
+                            <input type="date" id="anio_fabrication" name='anio_fabrication'
                                 value={form.anio_fabrication} onChange={handleChange}
                                 placeholder="Ingresa el año de fabricación del Vehículo" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
