@@ -106,7 +106,7 @@ export const CrearPedido = () => {
                                 placeholder="Ingresa el codigo del cliente" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
-                        {form.id_productos.map((producto, index) => (
+                        {form.id_vehiculos.map((producto, index) => (
                             <div key={index}>
                                 <label className="text-gray-700 uppercase font-bold text-sm" htmlFor={`producto-${index}`}>Codigo Vehículo {index + 1}:</label>
                                 <input type="text" id={`producto-${index}`} name={`producto-${index}`}
