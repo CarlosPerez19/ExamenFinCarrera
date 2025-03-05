@@ -9,7 +9,7 @@ export const CrearPedido = () => {
         codigo: '',
         descripcion: '',
         id_cliente: '',
-        id_vehiculos: ['']
+        id_vehiculo: ['']
     })
     
     // paso 2
@@ -20,26 +20,26 @@ export const CrearPedido = () => {
     }
 
     const handleProductoChange = (index, e) => {
-        const nuevosProductos = [...form.id_vehiculos];
+        const nuevosProductos = [...form.id_vehiculo];
         nuevosProductos[index] = e.target.value;
         setform({
             ...form,
-            id_vehiculos: nuevosProductos
+            id_vehiculo: nuevosProductos
         });
     }
 
     const agregarProducto = () => {
         setform({
             ...form,
-            id_vehiculos: [...form.id_vehiculos, '']
+            id_vehiculo: [...form.id_vehiculo, '']
         });
     }
 
     const eliminarProducto = (index) => {
-        const nuevosProductos = form.id_vehiculos.filter((_, i) => i !== index);
+        const nuevosProductos = form.id_vehiculo.filter((_, i) => i !== index);
         setform({
             ...form,
-            id_vehiculos: nuevosProductos
+            id_vehiculo: nuevosProductos
         });
     }
 
@@ -68,7 +68,7 @@ export const CrearPedido = () => {
                 codigo: '',
                 descripcion: '',
                 id_cliente: '',
-                id_vehiculos: ['']
+                id_vehiculo: ['']
             });
           } catch (error) {
             setMensaje({ respuesta: error.response.data.msg, tipo: false });
@@ -106,7 +106,7 @@ export const CrearPedido = () => {
                                 placeholder="Ingresa el codigo del cliente" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
-                        {form.id_vehiculos.map((producto, index) => (
+                        {form.id_vehiculo.map((producto, index) => (
                             <div key={index}>
                                 <label className="text-gray-700 uppercase font-bold text-sm" htmlFor={`producto-${index}`}>Codigo Vehículo {index + 1}:</label>
                                 <input type="text" id={`producto-${index}`} name={`producto-${index}`}

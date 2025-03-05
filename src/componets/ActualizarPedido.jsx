@@ -9,7 +9,7 @@ export const ActualizarPedidos = () => {
         codigo: '',
         descripcion: '',
         id_cliente: '',
-        id_vehiculos: ['']
+        id_vehiculo: ['']
     });
     const [mensaje, setMensaje] = useState({});
     const [pedidoEncontrado, setPedidoEncontrado] = useState(false);
@@ -26,26 +26,26 @@ export const ActualizarPedidos = () => {
     };
 
     const handleProductoChange = (index, e) => {
-        const nuevosProductos = [...form.id_vehiculos];
+        const nuevosProductos = [...form.id_vehiculo];
         nuevosProductos[index] = e.target.value;
         setForm({
             ...form,
-            id_vehiculos: nuevosProductos
+            id_vehiculo: nuevosProductos
         });
     }
 
     const agregarProducto = () => {
         setForm({
             ...form,
-            id_vehiculos: [...form.id_vehiculos, '']
+            id_vehiculo: [...form.id_vehiculo, '']
         });
     }
 
     const eliminarProducto = (index) => {
-        const nuevosProductos = form.id_vehiculos.filter((_, i) => i !== index);
+        const nuevosProductos = form.id_vehiculo.filter((_, i) => i !== index);
         setForm({
             ...form,
-            id_vehiculos: nuevosProductos
+            id_vehiculo: nuevosProductos
         });
     }
 
@@ -95,7 +95,7 @@ export const ActualizarPedidos = () => {
                 codigo: '',
                 descripcion: '',
                 id_cliente: '',
-                id_vehiculos: ['']
+                id_vehiculo: ['']
             });
             setPedidoEncontrado(false);
             setCodigo('');
@@ -144,7 +144,7 @@ export const ActualizarPedidos = () => {
                                 placeholder="Ingresa el codigo del cliente" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5" required />
                         </div>
 
-                        {form.id_productos.map((producto, index) => (
+                        {form.id_vehiculo.map((producto, index) => (
                             <div key={index}>
                                 <label className="text-gray-700 uppercase font-bold text-sm" htmlFor={`producto-${index}`}>Codigo Vehículo {index + 1}:</label>
                                 <input type="text" id={`producto-${index}`} name={`producto-${index}`}

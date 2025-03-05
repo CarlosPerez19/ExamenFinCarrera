@@ -69,7 +69,7 @@ export const DetallePedidos = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {pedido.id_productos.map((producto, index) => (
+                                {pedido.id_vehiculo.map((producto, index) => (
                                     <tr key={index}>
                                         <td className="border px-4 py-2">{producto.marca}</td>
                                         <td className="border px-4 py-2">{producto.modelo}</td>

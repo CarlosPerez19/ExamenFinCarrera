@@ -52,7 +52,7 @@ export const ListarPedidos = () => {
                                 <td className="border px-4 py-2">{pedido.id_cliente.nombre} {pedido.id_cliente.apellido} ({pedido.id_cliente.email})</td>
                                 <td className="border px-4 py-2">
                                     <ul>
-                                        {pedido.id_productos.map((producto, index) => (
+                                        {pedido.id_vehiculo.map((producto, index) => (
                                             <li key={index}>
                                                 {producto.marca} - {producto.modelo} - {producto.placa} - {producto.kilometraje}
                                             </li>
